@@ -44,7 +44,7 @@ jobs:
       run: mvn install -DskipTests
 
     - name: Run Serenity BDD tests
-      run: -Dwebdriver.chrome.headless=true
+      run: mvn clean verify -Dwebdriver.chrome.headless=true
 
     - name: Upload Serenity BDD report
       uses: actions/upload-artifact@v4
