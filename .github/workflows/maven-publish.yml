@@ -21,6 +21,18 @@ jobs:
       with:
         java-version: '21'
 
+    - name: Install Chrome browser
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y google-chrome-stable
+
+    - name: Install ChromeDriver
+      run: |
+        sudo apt-get install -yqq unzip
+        wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/114.0.5735.90/chromedriver_linux64.zip
+        unzip /tmp/chromedriver.zip -d /usr/local/bin/
+
+
     - name: Cache Maven packages
       uses: actions/cache@v4
       with:
@@ -32,7 +44,7 @@ jobs:
       run: mvn install -DskipTests
 
     - name: Run Serenity BDD tests
-      run: mvn clean verify
+      run: -Dwebdriver.chrome.headless=true
 
     - name: Upload Serenity BDD report
       uses: actions/upload-artifact@v4
