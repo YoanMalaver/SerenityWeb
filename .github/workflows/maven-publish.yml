@@ -23,7 +23,7 @@ jobs:
       run: mvn -version
     - name: Checking Gherkin feature files
       run: mvn serenity:check-gherkin  
-    - name: Run Dependency Check
-      run: mvn dependency-check:check -X
+    - name: Run Build
+      run: mvn clean verify
 
 
