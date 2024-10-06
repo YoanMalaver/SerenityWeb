@@ -21,6 +21,7 @@ jobs:
         cache: maven
     - name: Checking Gherkin feature files
       run: mvn serenity:check-gherkin  
-    - name: SonarCloud Analysis
-      run: mvn sonar:sonar -Dsonar.projectKey=your_project_key -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+    - name: Run Dependency Check
+      run: mvn dependency-check:check
+
 
