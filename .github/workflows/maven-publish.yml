@@ -24,6 +24,6 @@ jobs:
     - name: Checking Gherkin feature files
       run: mvn serenity:check-gherkin  
     - name: Run Build
-      run: mvn clean verify
+      run: mvn clean verify -Dwebdriver.chrome.options="--headless --no-sandbox --disable-dev-shm-usage"
 
 
