@@ -39,5 +39,6 @@ jobs:
       with:
         name: serenity-report
         path: ./target/site/serenity
+      continue-on-error: true
 
 
