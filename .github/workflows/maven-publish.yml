@@ -23,7 +23,16 @@ jobs:
       run: mvn -version
     - name: Checking Gherkin feature files
       run: mvn serenity:check-gherkin  
-    - name: Run Build
+    - name: Set up Chrome
+      run: sudo apt-get install -y google-chrome-stable
+    - name: Set up Xvfb
+      run: |
+        sudo apt-get install -y xvfb
+        Xvfb :99 -ac &
+        export DISPLAY=:99
+    - name: Run Tests
       run: mvn clean verify -Dwebdriver.chrome.options="--headless --no-sandbox --disable-dev-shm-usage"
+      env:
+        DISPLAY: :99
 
 
