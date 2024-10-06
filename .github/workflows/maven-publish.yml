@@ -1,4 +1,4 @@
-name: Maven Build
+name: Generate Serenity Report
 
 on:
   push:
